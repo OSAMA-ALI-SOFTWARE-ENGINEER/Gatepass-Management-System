@@ -17,7 +17,7 @@ PHP/MySQL web application that streamlines the process of registering, tracking,
 
 ## Technology Stack
 - PHP 7.4+ with the `mysqli` extension
-- MySQL or MariaDB (default database name: `cvmsdb`)
+- MySQL or MariaDB (configure your own database name during setup)
 - Apache or any PHP-capable web server (XAMPP/LAMP/WAMP recommended for local development)
 - Bootstrap 4.1, Font Awesome, jQuery, and other UI assets vendored under `vendor/`
 - Optional online dependency: `html5-qrcode` (loaded from CDN in `scan_page.php`)
@@ -48,16 +48,16 @@ PHP/MySQL web application that streamlines the process of registering, tracking,
 
 ## Installation and Setup
 1. Clone or copy the project into your web server's document root (for example `c:\xampp\htdocs\gatepass-main`).
-2. Create the database:
+2. Create the database (choose any name you prefer; `gatepass_db` is used here as an example):
    ```sql
-   CREATE DATABASE cvmsdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   CREATE DATABASE gatepass_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
    ```
 3. Import schema/data:
-   - If you already have an export, import it into `cvmsdb`.
+   - If you already have an export, import it into your chosen database.
    - Otherwise, create the tables listed in the [Database Overview](#database-overview) section manually (the column names are inferred from the codebase).
 4. Configure database credentials by editing `includes/dbconnection.php`:
    ```php
-   $con = mysqli_connect("localhost", "root", "", "cvmsdb");
+   $con = mysqli_connect("localhost", "root", "", "your_database_name");
    ```
    Adjust the host, username, password, and database name to match your environment.
 5. Ensure writable directories:
@@ -153,4 +153,3 @@ You can later change the password from within the UI (`change-password.php`).
 
 ## License
 No explicit license is provided. Treat this project as "all rights reserved" until the authors specify otherwise.
-
